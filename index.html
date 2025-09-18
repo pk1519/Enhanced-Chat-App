@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background Elements -->
+        <div class="background-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- Main Chat Container -->
+        <div class="chat-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="user-profile">
+                        <div class="avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="User Avatar">
+                            <div class="status-indicator online"></div>
+                        </div>
+                        <div class="user-info">
+                            <h3>You</h3>
+                            <p class="status-text">Online</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="action-btn" title="Settings" id="openSettingsBtn">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="action-btn" title="New Chat">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search conversations..." id="searchInput">
+                    </div>
+                </div>
+
+                <div class="contacts-list">
+                    <div class="contact-item active" data-contact="gaitonde">
+                        <div class="contact-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Gaitonde">
+                            <div class="status-indicator online"></div>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Gaitonde</h4>
+                            <p class="last-message">Hey there! How are you?</p>
+                            <span class="message-time">2:30 PM</span>
+                        </div>
+                        <div class="notification-badge">3</div>
+                    </div>
+
+                    <div class="contact-item" data-contact="bunty">
+                        <div class="contact-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face" alt="Bunty">
+                            <div class="status-indicator away"></div>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Bunty</h4>
+                            <p class="last-message">See you tomorrow!</p>
+                            <span class="message-time">1:45 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item" data-contact="kaleen">
+                        <div class="contact-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=50&h=50&fit=crop&crop=face" alt="Kaleen Bhaiya">
+                            <div class="status-indicator online"></div>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Kaleen Bhaiya</h4>
+                            <p class="last-message">Business meeting at 5</p>
+                            <span class="message-time">12:15 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item" data-contact="guddu">
+                        <div class="contact-avatar">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=50&h=50&fit=crop&crop=face" alt="Guddu Bhaiya">
+                            <div class="status-indicator offline"></div>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Guddu Bhaiya</h4>
+                            <p class="last-message">Thanks for the help!</p>
+                            <span class="message-time">11:30 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <div class="chat-contact-info">
+                        <div class="contact-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Current Contact" id="currentContactAvatar">
+                            <div class="status-indicator online" id="currentContactStatus"></div>
+                        </div>
+                        <div class="contact-details">
+                            <h3 id="currentContactName">Gaitonde</h3>
+                            <p class="typing-indicator" id="typingIndicator">
+                                <span class="typing-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                                typing...
+                            </p>
+                            <p class="last-seen" id="lastSeen">Last seen 2 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <div class="security-indicator" title="Secure end-to-end">
+                            <i class="fas fa-lock"></i>
+                            <span class="sec-label">Secure</span>
+                        </div>
+                        <button class="action-btn" title="Start Secure Chat" id="openCreateChatBtn">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <button class="action-btn" title="Voice Call">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="action-btn" title="Video Call">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="action-btn" title="More Options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="messages-container" id="messagesContainer">
+                    <div class="message received">
+                        <div class="message-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Gaitonde">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p>Hey there! How are you doing today?</p>
+                                <span class="message-time">2:28 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message sent">
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p>I'm doing great! Just working on some new projects. How about you?</p>
+                                <span class="message-time">2:29 PM</span>
+                                <i class="message-status fas fa-check-double"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message received">
+                        <div class="message-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Gaitonde">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p>That sounds exciting! I'd love to hear more about it sometime.</p>
+                                <span class="message-time">2:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-input-container">
+                    <div class="input-actions">
+                        <button class="input-action-btn" title="Attach File">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="input-action-btn" title="Emoji">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                    </div>
+                    <div class="message-input">
+                        <input type="text" placeholder="Type a message..." id="messageInput" autocomplete="off">
+                    </div>
+                    <div class="expire-controls" title="Expiry timer">
+                        <i class="fas fa-hourglass-half"></i>
+                        <select id="expirySelect" aria-label="Message expiry">
+                            <option value="300">5m</option>
+                            <option value="3600">1h</option>
+                            <option value="86400">24h</option>
+                            <option value="120">2m</option>
+                            <option value="60">1m</option>
+                            <option value="30">30s</option>
+                            <option value="15">15s</option>
+                            <option value="custom">Custom…</option>
+                            <option value="0">Off</option>
+                        </select>
+                    </div>
+                    <label class="burn-toggle" title="Burn after reading">
+                        <input type="checkbox" id="burnAfterRead">
+                        <span class="burn-label"><i class="fas fa-fire"></i> Burn</span>
+                    </label>
+                    <button class="send-button" id="sendButton">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <!-- Session status bar -->
+                <div class="session-status" id="sessionStatus" aria-hidden="true">
+                    <div class="status-left">
+                        <i class="fas fa-shield-alt"></i>
+                        <span id="sessionSecureLabel">Ephemeral Session</span>
+                    </div>
+                    <div class="status-center">
+                        <span id="sessionTimer">--:--</span>
+                        <span class="dot">•</span>
+                        <span id="participantCount">1 participant</span>
+                    </div>
+                    <div class="status-right">
+                        <button class="panic-btn" id="panicBtn" title="Emergency Destroy"><i class="fas fa-bomb"></i> Panic</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h2>Enhanced Chat</h2>
+                <p>Connecting to your conversations...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal" aria-hidden="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Security & Privacy Settings</h3>
+                <button class="modal-close" id="closeSettingsBtn" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-content">
+                <label class="toggle-row">
+                    <input type="checkbox" id="ghostModeToggle">
+                    <span>Ghost Mode (hide online status/last seen)</span>
+                </label>
+                <label class="toggle-row">
+                    <input type="checkbox" id="anonymousModeToggle">
+                    <span>Anonymous Mode (temporary identity)</span>
+                </label>
+                <label class="toggle-row">
+                    <input type="checkbox" id="decoyModeToggle">
+                    <span>Decoy Mode (show fake chats)</span>
+                </label>
+                <label class="toggle-row">
+                    <input type="checkbox" id="watermarkToggle" checked>
+                    <span>Dynamic Watermark overlay</span>
+                </label>
+                <div class="toggle-row" style="justify-content: space-between;">
+                    <span>Theme</span>
+                    <select id="themeSelect" aria-label="Theme">
+                        <option value="professional">Professional</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Secure Chat Modal -->
+    <div class="modal-overlay" id="createChatModal" aria-hidden="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Secure Temporary Chat</h3>
+                <button class="modal-close" id="closeCreateChatBtn" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-content">
+                <div class="toggle-row" style="justify-content: space-between;">
+                    <span>Expires In</span>
+                    <select id="createExpiry">
+                        <option value="3600">1 hour</option>
+                        <option value="21600">6 hours</option>
+                        <option value="86400">24 hours</option>
+                        <option value="custom">Custom…</option>
+                    </select>
+                </div>
+                <div class="toggle-row" style="justify-content: space-between;">
+                    <span>Password (optional)</span>
+                    <input type="password" id="createPassword" placeholder="Set access password" style="flex:1; max-width: 220px;">
+                </div>
+                <label class="toggle-row">
+                    <input type="checkbox" id="createSingleUse">
+                    <span>Single-use link (invalid after first join)</span>
+                </label>
+                <div class="create-actions">
+                    <button class="send-button" id="generateLinkBtn" title="Generate"><i class="fas fa-magic"></i></button>
+                    <input type="text" id="generatedLink" readonly placeholder="Generated link will appear here" />
+                    <button class="action-btn" id="copyLinkBtn" title="Copy"><i class="fas fa-copy"></i></button>
+                    <button class="action-btn" id="openLinkBtn" title="Open"><i class="fas fa-external-link-alt"></i></button>
+                </div>
+                <div class="qr-preview">
+                    <canvas id="qrCanvas" width="128" height="128"></canvas>
+                    <span class="qr-hint">Scan on mobile</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
