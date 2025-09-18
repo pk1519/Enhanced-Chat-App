@@ -238,6 +238,12 @@ Potential additions:
 - Security incident rate < 0.001%
 - Customization adoption > 75%, Enterprise feature utilization > 60%
 
+## Screenshot 
+<img width="1639" height="809" alt="image" src="https://github.com/user-attachments/assets/48861d3b-9e97-4054-a4f5-3f72bbd0f19a" />
+<img width="1619" height="803" alt="image" src="https://github.com/user-attachments/assets/6f94cb3e-037e-4cfd-9373-8a48926da81b" />
+<img width="1689" height="847" alt="image" src="https://github.com/user-attachments/assets/8c7edb07-609e-4df0-8953-b584c9624b0d" />
+
+
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
@@ -245,6 +251,9 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Contact me
+priyanshu345kumar@gmail.com
 
 ---
 
